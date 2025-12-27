@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Word Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            background: #f8f9ff;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            background: #f0f2ff;
+            border-color: #764ba2;
+        }
+        
+        .upload-icon {
+            font-size: 60px;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        .file-label {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .file-label:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .file-name {
+            margin-top: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .convert-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .convert-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .convert-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .flash-message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .flash-error {
+            background: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+        }
+        
+        .flash-success {
+            background: #efe;
+            color: #3c3;
+            border: 1px solid #cfc;
+        }
+        
+        .features {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .feature-icon {
+            color: #667eea;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .nav-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .nav-links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📄 PDF to Word Converter</h1>
+        <p class="subtitle">Convert your PDF documents to editable Word files</p>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-message flash-error">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <form action="{{ url_for('convert_pdf') }}" method="post" enctype="multipart/form-data" id="uploadForm">
+            <div class="upload-area">
+                <div class="upload-icon">📤</div>
+                <label for="file-input" class="file-label">Choose PDF File</label>
+                <input type="file" id="file-input" name="file" accept=".pdf" onchange="updateFileName()">
+                <div class="file-name" id="file-name">No file chosen</div>
+            </div>
+            
+            <button type="submit" class="convert-btn" id="convertBtn" disabled>
+                Convert to Word Document
+            </button>
+        </form>
+        
+        <div class="features">
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span>Preserves layout and formatting</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span>Fast and secure conversion</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span>Easy to use interface</span>
+            </div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="{{ url_for('about') }}">About</a>
+        </div>
+        
+        <div class="footer">
+            &copy; 2025 PDF to Word Converter | Internship Assignment
+        </div>
+    </div>
+    
+    <script>
+        function updateFileName() {
+            const input = document.getElementById('file-input');
+            const fileNameDiv = document.getElementById('file-name');
+            const convertBtn = document.getElementById('convertBtn');
+            
+            if (input.files.length > 0) {
+                fileNameDiv.textContent = input.files[0].name;
+                convertBtn.disabled = false;
+            } else {
+                fileNameDiv.textContent = 'No file chosen';
+                convertBtn.disabled = true;
+            }
+        }
+    </script>
+</body>
+</html>

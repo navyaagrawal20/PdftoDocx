@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - PDF to Word Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tech-item {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .tech-item strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .approach-steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        
+        .approach-steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .approach-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 About This Project</h1>
+        
+        <p>This application is developed as part of an internship assignment for <strong>The Medius</strong>. 
+        The task involves creating a Python-based solution to convert PDF documents into Microsoft Word format 
+        while preserving the original layout, formatting, and structure.</p>
+        
+        <h2>🎯 Project Objectives</h2>
+        <ul style="margin-left: 20px; color: #666; line-height: 1.8;">
+            <li>Read and analyze PDF file content and structure</li>
+            <li>Extract text with precise layout information</li>
+            <li>Recreate the document in MS Word format</li>
+            <li>Maintain spacing, alignment, headings, and formatting</li>
+            <li>Deploy as a web application for easy access</li>
+        </ul>
+        
+        <h2>🛠️ Technology Stack</h2>
+        <div class="tech-stack">
+            <div class="tech-item">
+                <strong>Python 3.x</strong>
+                Core programming language
+            </div>
+            <div class="tech-item">
+                <strong>python-docx</strong>
+                Word document creation
+            </div>
+            <div class="tech-item">
+                <strong>pdfplumber</strong>
+                PDF text extraction
+            </div>
+            <div class="tech-item">
+                <strong>Flask</strong>
+                Web framework
+            </div>
+        </div>
+        
+        <h2>📋 Development Approach</h2>
+        <ul class="approach-steps">
+            <li>
+                <strong>PDF Analysis</strong><br>
+                Used pdfplumber to extract text content and analyze the document structure, 
+                including font sizes, positions, and formatting.
+            </li>
+            <li>
+                <strong>Document Recreation</strong><br>
+                Utilized python-docx library to create Word documents with precise formatting, 
+                including headings, paragraphs, spacing, and alignment.
+            </li>
+            <li>
+                <strong>Web Application</strong><br>
+                Built a Flask-based web interface for easy file upload and conversion, 
+                providing a user-friendly experience.
+            </li>
+            <li>
+                <strong>Testing & Validation</strong><br>
+                Compared output documents with source PDFs to ensure accuracy of layout 
+                and content replication.
+            </li>
+            <li>
+                <strong>Deployment Ready</strong><br>
+                Prepared the application for deployment on platforms like Heroku with 
+                necessary configuration files.
+            </li>
+        </ul>
+        
+        <h2>✨ Key Features</h2>
+        <ul style="margin-left: 20px; color: #666; line-height: 1.8;">
+            <li><strong>Precise Layout Replication:</strong> Maintains original document structure</li>
+            <li><strong>Format Preservation:</strong> Retains headings, bold text, and alignment</li>
+            <li><strong>User-Friendly Interface:</strong> Simple drag-and-drop file upload</li>
+            <li><strong>Instant Download:</strong> Get converted files immediately</li>
+            <li><strong>Responsive Design:</strong> Works on all devices</li>
+        </ul>
+        
+        <h2>👨‍💻 Developer Information</h2>
+        <p>This project demonstrates proficiency in Python programming, document processing, 
+        web development, and deployment practices. The code follows best practices with 
+        clear documentation and modular structure.</p>
+        
+        <a href="{{ url_for('index') }}" class="back-btn">← Back to Converter</a>
+    </div>
+</body>
+</html>
