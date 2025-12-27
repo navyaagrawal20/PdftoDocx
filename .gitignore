@@ -35,6 +35,11 @@ uploads/*
 !uploads/.gitkeep
 outputs/*
 !outputs/.gitkeep
+# Django outputs and temp conversions
+django_site/outputs/*
+!django_site/outputs/.gitkeep
+# SQLite DB
+django_site/db.sqlite3
 
 # IDE
 .vscode/
