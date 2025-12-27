@@ -5,3 +5,5 @@ Werkzeug==3.0.1
 gunicorn==21.2.0
 PyPDF2==3.0.1
 Pillow==10.1.0
+Django==4.2.10
+pdf2docx
