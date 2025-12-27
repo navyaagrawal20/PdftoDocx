@@ -4,7 +4,6 @@
 
 This project is a web-based application that converts PDF documents to Microsoft Word format while preserving the original layout, formatting, and structure. Developed as part of an internship assignment for **The Medius**.
 
-## 🎯 Assignment Requirements
 
 **Task:** Create an MS Word document from scratch using Python, replicating the content and layout of a given PDF file.
 
@@ -99,40 +98,6 @@ python pdf_to_docx_enhanced.py
 ```
 This will convert `django_assignment.pdf` to `replicated_document.docx`
 
-## 🌐 Deployment
-
-### Heroku Deployment
-
-1. **Install Heroku CLI**
-Download from: https://devcenter.heroku.com/articles/heroku-cli
-
-2. **Login to Heroku**
-```bash
-heroku login
-```
-
-3. **Create Heroku App**
-```bash
-heroku create your-app-name
-```
-
-4. **Deploy Application**
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git push heroku main
-```
-
-5. **Open Application**
-```bash
-heroku open
-```
-
-### Alternative Deployment Platforms
-- **Render**: Connect GitHub repository and deploy
-- **Railway**: Simple deployment with Git push
-- **PythonAnywhere**: Upload files and configure WSGI
 
 ## 🎨 Features
 
@@ -210,35 +175,7 @@ The application successfully converts the assignment PDF containing:
 **Issue**: Layout differences
 - **Solution**: Some PDFs with complex layouts may require manual adjustment
 
-## 📧 Submission Details
 
-**Email To**: tech@themedius.in  
-**CC**: hr@themedius.in  
-**Includes**:
-- Source code repository URL
-- This documentation
-- Live deployment URL
-- Resume
-
-## 👨‍💻 Developer
-
-**Assignment for**: The Medius Work-From-Home Internship  
-**Date**: December 2025  
-**Evaluation Criteria**:
-- Accuracy of replication ✅
-- Functionality ✅
-- Code quality ✅
-- User experience ✅
-- Successful deployment ✅
-
-## 📚 Additional Resources
-
-- [python-docx Documentation](https://python-docx.readthedocs.io/)
-- [pdfplumber Documentation](https://github.com/jsvine/pdfplumber)
-- [Flask Documentation](https://flask.palletsprojects.com/)
-- [Heroku Python Deployment](https://devcenter.heroku.com/articles/getting-started-with-python)
-
-## 📜 License
 
 This project is created for educational and internship evaluation purposes.
 
